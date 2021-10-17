@@ -1,0 +1,9 @@
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  margin: 0;
+  font: 400 1rem "Inter", sans-serif;
+}
