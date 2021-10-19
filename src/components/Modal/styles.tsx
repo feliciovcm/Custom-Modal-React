@@ -3,13 +3,15 @@ import styled, { createGlobalStyle } from "styled-components";
 const ModalDialog = styled.div`
   z-index: 1050;
   width: 100%;
-  background-color: #fefefe;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
+  background-color: #FFFFFF;
+  box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+  border: 1px solid #F8F8F8;
+  box-sizing: border-box;
+  border-radius: 0.3125rem;
 `;
 
 const ModalContent = styled.div`
-  padding: 0.5rem;
+  padding: 0rem;
   width: 100%;
 `;
 

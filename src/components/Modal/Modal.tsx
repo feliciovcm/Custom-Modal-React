@@ -22,7 +22,8 @@ interface ModalProps {
 
 function Modal(props: ModalProps) {
   const { isOpen, onClose, id, children } = props;
-  const [fadeType, setFadeType] = useState<Fade>("in");
+  const [fadeType, setFadeType] = useState<Fade>("out");
+  const [open, setOpen] = useState(false);
 
   const background = useRef(null);
 
@@ -36,15 +37,22 @@ function Modal(props: ModalProps) {
       setFadeType("out");
     }
     if (isOpen) {
-      setFadeType("in");
+      setOpen(true);
     }
   }, [isOpen]);
+
+  useEffect(() => {
+    if (open) {
+      setTimeout(() => setFadeType("in"), 50);
+    }
+  }, [open]);
 
   const transitionEnd = (e: TransitionEvent) => {
     if (e.propertyName !== "opacity" || fadeType === "in") return;
 
     if (fadeType === "out") {
       onClose();
+      setOpen(false);
     }
   };
 
@@ -60,7 +68,7 @@ function Modal(props: ModalProps) {
     setFadeType("out");
   };
 
-  if (isOpen)
+  if (open)
     return ReactDom.createPortal(
       <ModalView
         id={id}
@@ -76,4 +84,4 @@ function Modal(props: ModalProps) {
   return null;
 }
 
-export default Modal;
+export { Modal };
